@@ -3,665 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indonesia Milenial Berkarya — Hyper-Casual Games</title>
+    <title>Itz Technologies - Casual Game Developer</title>
     <style>
-        /* ========== Reset & Base ========== */
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --primary:   #6c5ce7;
-            --primary-dark: #5a4bd1;
-            --accent:    #fd79a8;
-            --bg-dark:   #0f0e17;
-            --bg-card:   #1a1932;
-            --text-main: #fffffe;
-            --text-muted:#a7a9be;
-            --text-dim:  #6c6e8a;
-            --border:    #2d2b55;
-            --font-display: 'Segoe UI', 'Poppins', system-ui, sans-serif;
-            --font-body:    'Inter', 'Segoe UI', system-ui, sans-serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: var(--font-body);
-            background: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.7;
-            overflow-x: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #ffffff;
+            color: #1a1a2e;
+            line-height: 1.8;
         }
-
-        /* ========== Background decoration (pure CSS, no images) ========== */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -40%;
-            right: -20%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(108,92,231,0.08) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            bottom: -30%;
-            left: -15%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(253,121,168,0.06) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* ========== Layout containers ========== */
-        .wrapper {
-            max-width: 720px;
+        .container {
+            max-width: 800px;
             margin: 0 auto;
-            padding: 0 24px;
-            position: relative;
-            z-index: 1;
+            padding: 60px 24px;
+        }
+        /* Header */
+        header {
+            margin-bottom: 60px;
+        }
+        .logo {
+            font-size: 14px;
+            font-weight: 600;
+            color: #4a6cf7;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+        .tagline {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a1a2e;
+            line-height: 1.3;
+        }
+        .tagline span {
+            color: #4a6cf7;
         }
 
-        .section {
-            padding: 80px 0;
-            border-bottom: 1px solid var(--border);
+        /* Section */
+        section {
+            margin-bottom: 48px;
+        }
+        h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f0f0f5;
+        }
+        p {
+            font-size: 15px;
+            color: #4a4a6a;
+            margin-bottom: 12px;
         }
 
-        .section:last-of-type {
+        /* Games List */
+        .game-item {
+            padding: 16px 0;
+            border-bottom: 1px solid #f0f0f5;
+        }
+        .game-item:last-child {
             border-bottom: none;
         }
-
-        /* ========== Header / Hero ========== */
-        header {
-            padding: 120px 0 60px;
-            text-align: center;
-        }
-
-        header h1 {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 6vw, 3.2rem);
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        header .tagline {
-            margin-top: 16px;
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            font-weight: 400;
-        }
-
-        header .subtitle {
-            margin-top: 10px;
-            font-size: 0.95rem;
-            color: var(--text-dim);
-        }
-
-        /* ========== Navigation ========== */
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            transition: color 0.25s;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--text-main);
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* ========== Section headers ========== */
-        h2 {
-            font-family: var(--font-display);
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: -0.01em;
-        }
-
-        h2 .number {
-            color: var(--primary);
-            font-size: 0.9rem;
+        .game-name {
+            font-size: 16px;
             font-weight: 600;
-            display: block;
-            margin-bottom: 4px;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
+            color: #1a1a2e;
         }
-
-        .section-desc {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-            margin-bottom: 40px;
-        }
-
-        /* ========== About ========== */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 28px;
-        }
-
-        @media (max-width: 600px) {
-            .about-grid { grid-template-columns: 1fr; }
-        }
-
-        .stat-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 28px 24px;
-            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
-            box-shadow: 0 12px 40px rgba(108,92,231,0.10);
-        }
-
-        .stat-card .stat-icon {
-            font-size: 1.6rem;
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        .stat-card h3 {
-            font-family: var(--font-display);
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 4px;
-            letter-spacing: 0.02em;
-            text-transform: uppercase;
-        }
-
-        .stat-card .stat-number {
-            font-family: var(--font-display);
-            font-size: 2.2rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.2;
-        }
-
-        .stat-card .stat-label {
-            font-size: 0.88rem;
-            color: var(--text-muted);
+        .game-desc {
+            font-size: 14px;
+            color: #6c6c8a;
             margin-top: 2px;
         }
 
-        .stat-card p {
-            font-size: 0.92rem;
-            color: var(--text-muted);
-            margin-top: 12px;
-            line-height: 1.6;
-        }
-
-        /* ========== Games ========== */
-        .game-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .game-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 28px 32px;
-            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-        }
-
-        .game-item:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent);
-            box-shadow: 0 12px 40px rgba(253,121,168,0.08);
-        }
-
-        .game-item h3 {
-            font-family: var(--font-display);
-            font-size: 1.15rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .game-item .game-meta {
-            font-size: 0.82rem;
-            color: var(--text-dim);
-            margin-bottom: 10px;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
-
-        .game-item p {
-            font-size: 0.92rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .game-item .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 14px;
-        }
-
-        .game-item .tags span {
-            font-size: 0.75rem;
-            padding: 4px 12px;
-            border-radius: 999px;
-            background: rgba(108,92,231,0.12);
-            color: var(--primary);
-            font-weight: 500;
-            letter-spacing: 0.02em;
-        }
-
-        /* ========== Values ========== */
+        /* Values */
         .values-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 24px;
+            margin-top: 8px;
         }
-
-        @media (max-width: 640px) {
-            .values-grid { grid-template-columns: 1fr; }
-        }
-
         .value-item {
-            text-align: center;
-            padding: 32px 20px;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            transition: border-color 0.3s, background 0.3s;
+            margin-bottom: 16px;
         }
-
-        .value-item:hover {
-            border-color: var(--primary);
-            background: rgba(108,92,231,0.04);
-        }
-
-        .value-item .value-icon {
-            font-size: 2rem;
-            display: block;
-            margin-bottom: 12px;
-        }
-
-        .value-item h3 {
-            font-family: var(--font-display);
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-
-        .value-item p {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        /* ========== Contact ========== */
-        .contact-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 40px 36px;
-            text-align: center;
-        }
-
-        .contact-card .contact-icon {
-            font-size: 2.4rem;
-            display: block;
-            margin-bottom: 12px;
-        }
-
-        .contact-card h3 {
-            font-family: var(--font-display);
-            font-size: 1.1rem;
+        .value-title {
+            font-size: 15px;
             font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
+            color: #1a1a2e;
+        }
+        .value-desc {
+            font-size: 14px;
+            color: #6c6c8a;
         }
 
-        .contact-card .email {
-            font-size: 1.4rem;
-            font-weight: 600;
-            word-break: break-all;
+        /* Links */
+        .links {
+            margin-top: 8px;
         }
-
-        .contact-card .email a {
-            color: var(--text-main);
-            text-decoration: none;
-            transition: color 0.25s;
-        }
-
-        .contact-card .email a:hover {
-            color: var(--primary);
-        }
-
-        .contact-card .contact-note {
-            font-size: 0.88rem;
-            color: var(--text-dim);
-            margin-top: 10px;
-        }
-
-        /* ========== Footer ========== */
-        footer {
-            padding: 40px 0 60px;
-            text-align: center;
-            border-top: 1px solid var(--border);
-            margin-top: 0;
-        }
-
-        footer p {
-            font-size: 0.82rem;
-            color: var(--text-dim);
-        }
-
-        footer .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin-top: 12px;
-            flex-wrap: wrap;
-        }
-
-        footer .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.82rem;
-            transition: color 0.25s;
-        }
-
-        footer .footer-links a:hover {
-            color: var(--primary);
-        }
-
-        /* ========== Divider ornament (pure text, no image) ========== */
-        .ornament {
-            text-align: center;
-            color: var(--border);
-            font-size: 1.2rem;
-            letter-spacing: 1em;
-            margin-top: -1px;
-            user-select: none;
-        }
-
-        /* ========== CTA button ========== */
-        .cta-row {
-            display: flex;
-            justify-content: center;
-            margin-top: 40px;
-        }
-
-        .cta {
+        .links a {
             display: inline-block;
-            padding: 14px 40px;
-            border-radius: 999px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: #fff;
-            font-weight: 600;
-            font-size: 0.95rem;
+            color: #4a6cf7;
             text-decoration: none;
-            letter-spacing: 0.04em;
-            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 15px;
+            margin-right: 24px;
+            margin-bottom: 8px;
+        }
+        .links a:hover {
+            text-decoration: underline;
         }
 
-        .cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(108,92,231,0.30);
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 1px solid #f0f0f5;
+            font-size: 13px;
+            color: #9c9cb0;
+        }
+        footer a {
+            color: #6c6c8a;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .footer-links {
+            margin-bottom: 8px;
+        }
+        .footer-links a {
+            margin-right: 16px;
         }
     </style>
 </head>
 <body>
-
-    <!-- ==================== HERO ==================== -->
-    <div class="wrapper">
+    <div class="container">
         <header>
-            <h1>Indonesia Milenial Berkarya</h1>
-            <p class="tagline">Hyper-Casual Game Developer</p>
-            <p class="subtitle">Jakarta, Indonesia</p>
-
-            <nav>
-                <a href="#about">About</a>
-                <a href="#games">Games</a>
-                <a href="#values">Values</a>
-                <a href="#contact">Contact</a>
-            </nav>
+            <div class="logo">Itz Technologies</div>
+            <div class="tagline">
+                We make fun, simple games<br>
+                for <span>everyone</span> to enjoy.
+            </div>
         </header>
-    </div>
 
-    <div class="ornament">✦ ✦ ✦</div>
+        <section>
+            <h2>About</h2>
+            <p>Itz Technologies is a casual game developer focused on creating lightweight, accessible mobile games. We believe games should be easy to pick up, fun to play, and available to everyone. Our games are designed for quick sessions and moments of relaxation.</p>
+        </section>
 
-    <!-- ==================== ABOUT ==================== -->
-    <div class="wrapper">
-        <section class="section" id="about">
-            <h2>
-                <span class="number">01 &mdash; About</span>
-                Who We Are
-            </h2>
-            <p class="section-desc">
-                We are an Indonesian game studio driven by a simple belief:
-                great games don't need to be complicated.
-            </p>
-
-            <div class="about-grid">
-                <div class="stat-card">
-                    <span class="stat-icon">🎮</span>
-                    <h3>Founded</h3>
-                    <div class="stat-number">2024</div>
-                    <div class="stat-label">Jakarta, Indonesia</div>
-                    <p>
-                        Born from a passion for mobile gaming and a vision to
-                        bring simple, joyful experiences to players worldwide.
-                    </p>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-icon">🌍</span>
-                    <h3>Reach</h3>
-                    <div class="stat-number">Global</div>
-                    <div class="stat-label">Players across continents</div>
-                    <p>
-                        Our games are designed for everyone &mdash; no matter
-                        where you are, a tap is all it takes to start playing.
-                    </p>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-icon">⚡</span>
-                    <h3>Focus</h3>
-                    <div class="stat-number">Hyper-Casual</div>
-                    <div class="stat-label">Simple. Addictive. Fun.</div>
-                    <p>
-                        One-tap mechanics, instant engagement, and endless
-                        replayability are the core of every title we ship.
-                    </p>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-icon">🤝</span>
-                    <h3>Team</h3>
-                    <div class="stat-number">Small &amp; Mighty</div>
-                    <div class="stat-label">Tight-knit crew</div>
-                    <p>
-                        We wear many hats, move fast, and believe the best
-                        games come from teams that genuinely enjoy working
-                        together.
-                    </p>
-                </div>
+        <section>
+            <h2>Games</h2>
+            <div class="game-item">
+                <div class="game-name">Heart Jigsaw</div>
+                <div class="game-desc">A relaxing jigsaw puzzle game where you piece together beautiful heart-shaped images. Simple, calming, and satisfying.</div>
+            </div>
+            <div class="game-item">
+                <div class="game-name">More coming soon</div>
+                <div class="game-desc">We are working on new casual titles to bring more fun to your screen.</div>
             </div>
         </section>
-    </div>
 
-    <div class="ornament">✦ ✦ ✦</div>
-
-    <!-- ==================== GAMES ==================== -->
-    <div class="wrapper">
-        <section class="section" id="games">
-            <h2>
-                <span class="number">02 &mdash; Games</span>
-                Our Titles
-            </h2>
-            <p class="section-desc">
-                Every game we build starts with one question: is this fun in
-                the first five seconds?
-            </p>
-
-            <div class="game-list">
-                <div class="game-item">
-                    <h3>Sunmote</h3>
-                    <div class="game-meta">com.test.sunmote &middot; Latest Title</div>
-                    <p>
-                        A bright and addictive hyper-casual experience. Guide
-                        the sunmote through increasingly challenging obstacles
-                        with simple one-tap controls. Easy to learn, hard to
-                        put down.
-                    </p>
-                    <div class="tags">
-                        <span>One-Tap</span>
-                        <span>Endless</span>
-                        <span>High Score</span>
-                    </div>
-                </div>
-
-                <div class="game-item">
-                    <h3>More Coming Soon</h3>
-                    <div class="game-meta">In Development</div>
-                    <p>
-                        We're prototyping new concepts and refining our craft.
-                        If you have a fun hyper-casual idea, we'd love to hear
-                        from you.
-                    </p>
-                    <div class="tags">
-                        <span>Secret</span>
-                        <span>Stay Tuned</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <div class="ornament">✦ ✦ ✦</div>
-
-    <!-- ==================== VALUES ==================== -->
-    <div class="wrapper">
-        <section class="section" id="values">
-            <h2>
-                <span class="number">03 &mdash; Values</span>
-                What Drives Us
-            </h2>
-            <p class="section-desc">
-                Four principles that guide every decision we make.
-            </p>
-
+        <section>
+            <h2>What We Do</h2>
             <div class="values-grid">
                 <div class="value-item">
-                    <span class="value-icon">🎯</span>
-                    <h3>Simple First</h3>
-                    <p>
-                        If a player can't understand the game in three seconds,
-                        we go back to the drawing board.
-                    </p>
+                    <div class="value-title">Casual Games</div>
+                    <div class="value-desc">Simple mechanics, short sessions, instant fun. No complex rules, just pick up and play.</div>
                 </div>
                 <div class="value-item">
-                    <span class="value-icon">📱</span>
-                    <h3>Mobile Native</h3>
-                    <p>
-                        We design for thumbs, portrait mode, and short sessions
-                        &mdash; because that's how the world plays.
-                    </p>
+                    <div class="value-title">Mobile First</div>
+                    <div class="value-desc">Our games are built for mobile devices, optimized for touch controls and on-the-go play.</div>
                 </div>
                 <div class="value-item">
-                    <span class="value-icon">📊</span>
-                    <h3>Data Informed</h3>
-                    <p>
-                        Every mechanic is tested. Every level is measured. We
-                        let the numbers show us what's working.
-                    </p>
+                    <div class="value-title">Free to Play</div>
+                    <div class="value-desc">We believe everyone deserves a moment of fun. Our games are free to download and play.</div>
                 </div>
             </div>
         </section>
-    </div>
 
-    <div class="ornament">✦ ✦ ✦</div>
-
-    <!-- ==================== CONTACT ==================== -->
-    <div class="wrapper">
-        <section class="section" id="contact">
-            <h2>
-                <span class="number">04 &mdash; Contact</span>
-                Get In Touch
-            </h2>
-            <p class="section-desc">
-                Have a question, a partnership idea, or just want to say hi?
-                We'd love to hear from you.
-            </p>
-
-            <div class="contact-card">
-                <span class="contact-icon">✉️</span>
-                <h3>Email</h3>
-                <p class="email">
-                    <a href="mailto:iqraahtisaari@gmail.com">iqraahtisaari@gmail.com</a>
-                </p>
-                <p class="contact-note">
-                    We reply within 24 hours. Publishers and collaborators welcome.
-                </p>
+        <section>
+            <h2>Contact</h2>
+            <p>If you have questions, feedback, or business inquiries, feel free to reach out.</p>
+            <div class="links">
+                <a href="mailto:foodieyos@gmail.com">foodieyos@gmail.com</a>
             </div>
         </section>
-    </div>
 
-    <!-- ==================== FOOTER ==================== -->
-    <div class="wrapper">
         <footer>
-            <p>&copy; 2026 Indonesia Milenial Berkarya. All rights reserved.</p>
             <div class="footer-links">
-                <a href="mailto:iqraahtisaari@gmail.com">Email</a>
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
             </div>
+            <div>&copy; 2026 Itz Technologies. All rights reserved.</div>
         </footer>
     </div>
-
 </body>
 </html>
